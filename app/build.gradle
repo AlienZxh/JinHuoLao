@@ -1,0 +1,110 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+
+        multiDexEnabled true
+
+        applicationId rootProject.ext.ApplicationId
+        versionCode rootProject.ext.VersionCode
+        versionName rootProject.ext.VersionName
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+
+    signingConfigs {
+        keystore {
+            storeFile file("../sign/j1j2_zxh.keystore")
+            storePassword "zxh19910528"
+            keyAlias "j1j2_zxh_keystore"
+            keyPassword "zxh19910528"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.keystore
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "API_URL", "\"http://api.pifalao.com/\""
+            buildConfigField "String", "IMAGE_URL", "\"http://api.pifalao.com\""
+        }
+
+        release {
+            signingConfig signingConfigs.keystore
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", " API_URL", "\"http://api.pifalao.com/\""
+            buildConfigField "String", "IMAGE_URL", "\"http://api.pifalao.com\""
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(output.outputFile.parent,
+                    buildType.name == "debug" ?
+                            rootProject.apkname
+                                    + buildType.name + ".apk" :
+                            rootProject.apkname
+                                    + "V" + defaultConfig.versionCode
+                                    + "T" + rootProject.buildTime()
+                                    + buildType.name
+                                    + ".apk");
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+//        resolutionStrategy.force 'com.squareup.okio:okio:1.13.0'
+//        resolutionStrategy.force "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
+//        resolutionStrategy.force "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    compile project(":common")
+    compile project(":data")
+
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+    kapt "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testCompile "junit:junit:$rootProject.junitVersion"
+}
