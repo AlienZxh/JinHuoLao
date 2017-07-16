@@ -37,7 +37,7 @@ class MainUI : AnkoComponent<AppCompatActivity> {
                     toolbar = themedToolbar(theme = R.style.AppTheme_AppBar_Light) {
                         popupTheme = R.style.AppTheme_Overlay_Light
                         id = R.id.toolbar
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = 4f
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = 8f
 
                     }.lparams(width = matchParent, height = ctx.attrAsDimen(R.attr.actionBarSize))
 

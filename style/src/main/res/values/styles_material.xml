@@ -2,6 +2,8 @@
 <resources>
     <!-- Base Theme -->
     <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
         <!-- Attributes for all APIs -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
