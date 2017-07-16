@@ -4,13 +4,18 @@ import android.graphics.Color
 import android.os.Build
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.View
+import com.j1j2.common.base.BaseAdapter
 import com.j1j2.common.widgets.attrAsDimen
 import com.j1j2.jinhuolao.R
 import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.mikepenz.iconics.IconicsDrawable
+import eu.davidea.flexibleadapter.SelectableAdapter
+import eu.davidea.flexibleadapter.common.FlexibleItemDecoration
+import eu.davidea.flexibleadapter.common.SmoothScrollLinearLayoutManager
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.themedToolbar
 import org.jetbrains.anko.design.bottomNavigationView
@@ -22,7 +27,7 @@ import org.jetbrains.anko.support.v4.viewPager
 /**
  * Created by albertz on 17-7-13.
  */
-class ShopcartUI : AnkoComponent<AppCompatActivity> {
+class ShopcartUI(val baseAdapter: BaseAdapter) : AnkoComponent<AppCompatActivity> {
 
     override fun createView(ui: AnkoContext<AppCompatActivity>): View {
         return with(ui) {
@@ -42,10 +47,20 @@ class ShopcartUI : AnkoComponent<AppCompatActivity> {
 
                 }.lparams(width = matchParent, height = wrapContent)
 
-                recyclerView{
+                recyclerView {
+                    bottomPadding = ctx.attrAsDimen(R.attr.actionBarSize)
+                    clipToPadding = false
 
-                }.lparams(width = matchParent, height = matchParent){
-                    verticalMargin = ctx.attrAsDimen(R.attr.actionBarSize)
+                    layoutManager = SmoothScrollLinearLayoutManager(ctx)
+                    itemAnimator = DefaultItemAnimator()
+                    addItemDecoration(FlexibleItemDecoration(owner)
+                            .withDefaultDivider()
+                            .withDrawOver(true))
+
+                    adapter = baseAdapter;
+
+                }.lparams(width = matchParent, height = matchParent) {
+                    topMargin = ctx.attrAsDimen(R.attr.actionBarSize)
                 }
 
 

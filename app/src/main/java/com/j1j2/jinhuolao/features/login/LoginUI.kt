@@ -41,7 +41,7 @@ class LoginUI : AnkoComponent<AppCompatActivity> {
                 textInputLayout {
                     hint = "门店名称"
                     counterMaxLength = 20
-                    include<TextInputEditText>(R.layout.view_textinputedittext) {
+                    include<TextInputEditText>(R.layout.view_textinputedittext_main) {
                         imeOptions = EditorInfo.IME_ACTION_NEXT
                         inputType = EditorInfo.TYPE_CLASS_TEXT
                     }
@@ -53,7 +53,7 @@ class LoginUI : AnkoComponent<AppCompatActivity> {
                 textInputLayout {
                     hint = "账号名称"
                     counterMaxLength = 20
-                    include<TextInputEditText>(R.layout.view_textinputedittext) {
+                    include<TextInputEditText>(R.layout.view_textinputedittext_main) {
                         imeOptions = EditorInfo.IME_ACTION_NEXT
                         inputType = EditorInfo.TYPE_CLASS_TEXT
                     }
@@ -64,7 +64,7 @@ class LoginUI : AnkoComponent<AppCompatActivity> {
                 textInputLayout {
                     hint = "账号密码"
                     counterMaxLength = 20
-                    include<TextInputEditText>(R.layout.view_textinputedittext) {
+                    include<TextInputEditText>(R.layout.view_textinputedittext_main) {
                         imeOptions = EditorInfo.IME_ACTION_DONE
                         inputType = EditorInfo.TYPE_TEXT_VARIATION_PASSWORD
                     }
