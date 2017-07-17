@@ -85,6 +85,8 @@ dependencies {
 
     compile "com.mikepenz:iconics-core:$rootProject.iconicsVersion"
     compile "com.mikepenz:community-material-typeface:$rootProject.communityMterialTypefaceVersion"
+    compile "cz.kinst.jakub:android-stateful-layout-base:$rootProject.statefulLayoutVersion"
+
 
     androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'

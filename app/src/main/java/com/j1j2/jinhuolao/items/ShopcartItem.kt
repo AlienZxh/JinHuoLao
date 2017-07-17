@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.view.View
 import android.widget.TextView
+import com.blankj.utilcode.util.SizeUtils
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.IFlexible
 import eu.davidea.viewholders.FlexibleViewHolder
@@ -54,11 +55,31 @@ class ShopcartItem(var id: Int) : AbstractFlexibleItem<ShopcartItem.ShopcartView
 
     override fun hashCode(): Int = id
 
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<ShopcartItem> {
+        override fun createFromParcel(parcel: Parcel): ShopcartItem {
+            return ShopcartItem(parcel)
+        }
+
+        override fun newArray(size: Int): Array<ShopcartItem?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+
     class ShopcartViewHolder(view: View, adapter: FlexibleAdapter<*>) : FlexibleViewHolder(view, adapter) {
 
-        lateinit var productName: TextView
-        lateinit var productInfo1: TextView
-        lateinit var productInfo2: TextView
+        var productName: TextView
+        var productInfo1: TextView
+        var productInfo2: TextView
 
         init {
             productName = itemView.find<TextView>(R.id.product_name)
@@ -84,7 +105,7 @@ class ShopcartItem(var id: Int) : AbstractFlexibleItem<ShopcartItem.ShopcartView
         }
 
         override fun getActivationElevation(): Float {
-            return 4f
+            return SizeUtils.dp2px(4f).toFloat()
         }
 
         override fun scrollAnimators(animators: MutableList<Animator>, position: Int, isForward: Boolean) {
@@ -92,25 +113,6 @@ class ShopcartItem(var id: Int) : AbstractFlexibleItem<ShopcartItem.ShopcartView
                 AnimatorHelper.slideInFromBottomAnimator(animators, itemView, mAdapter.getRecyclerView());
             else
                 AnimatorHelper.slideInFromTopAnimator(animators, itemView, mAdapter.getRecyclerView());
-        }
-    }
-
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<ShopcartItem> {
-        override fun createFromParcel(parcel: Parcel): ShopcartItem {
-            return ShopcartItem(parcel)
-        }
-
-        override fun newArray(size: Int): Array<ShopcartItem?> {
-            return arrayOfNulls(size)
         }
     }
 }

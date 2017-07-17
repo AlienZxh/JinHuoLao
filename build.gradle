@@ -69,6 +69,8 @@ allprojects {
         flexibleadapterVersion = '5.0.0-rc2'
         iconicsVersion = '2.8.9@aar'
         communityMterialTypefaceVersion = '1.9.32.2@aar'
+        statefulLayoutVersion = '2.0.5'
+
 
         espressoVersion = "2.2.2"
         junitVersion = "4.12"

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">common</string>
+    <string name="error_icon">{cmd-alert-circle}</string>
+    <string name="empty_icon">{cmd-flask-empty-outline}</string>
 </resources>

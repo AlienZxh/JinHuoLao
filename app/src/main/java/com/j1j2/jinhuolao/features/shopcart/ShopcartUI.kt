@@ -34,7 +34,7 @@ class ShopcartUI(val baseAdapter: BaseAdapter) : AnkoComponent<AppCompatActivity
                     toolbar =themedToolbar(theme = R.style.AppTheme_AppBar_Light) {
                         popupTheme = R.style.AppTheme_Overlay_Light
                         minimumHeight =  ctx.attrAsDimen(R.attr.actionBarSize)
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = 8f
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = dip(8).toFloat()
 
                         owner.setSupportActionBar(this)
                     }.lparams(width = matchParent, height = ctx.attrAsDimen(R.attr.actionBarSize)){

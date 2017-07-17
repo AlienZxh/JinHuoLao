@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewManager
 import android.widget.Button
 import android.widget.TextView
+import com.mikepenz.iconics.view.IconicsTextView
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.internals.AnkoInternals
 
@@ -39,6 +40,16 @@ fun wrapContextIfNeeded(ctx: Context, @StyleRes theme: Int): Context {
         ctx
     }
 }
+
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun ViewManager.baseStatefulLayout() = baseStatefulLayout(init = {})
+
+inline fun ViewManager.baseStatefulLayout(init: BaseStatefulLayout.() -> Unit): BaseStatefulLayout {
+    return ankoView({ BaseStatefulLayout(it) }, theme = 0, init = init)
+}
+
+
 
 
 

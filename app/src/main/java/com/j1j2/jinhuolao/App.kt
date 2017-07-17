@@ -19,6 +19,7 @@ import com.tencent.bugly.BuglyStrategy
 import com.tencent.bugly.Bugly
 import com.alibaba.android.arouter.launcher.ARouter
 import com.j1j2.jinhuolao.di.DaggerAppComponent
+import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.mikepenz.iconics.context.IconicsContextWrapper
 
 import com.shizhefei.view.coolrefreshview.header.MaterialHeader
@@ -26,6 +27,9 @@ import com.shizhefei.view.coolrefreshview.PullHeader
 import com.shizhefei.view.coolrefreshview.IPullHeaderFactory
 import com.shizhefei.view.coolrefreshview.CoolRefreshView
 import io.reactivex.ObservableSource
+import com.mikepenz.iconics.Iconics
+
+
 
 
 /**
@@ -39,6 +43,7 @@ open class App : DaggerApplication() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(IconicsContextWrapper.wrap(base));
         MultiDex.install(this)
+
     }
 
     fun debugInitObservable(): Iterable<ObservableSource<*>>? = null
@@ -61,6 +66,8 @@ open class App : DaggerApplication() {
     private fun initLeakCanary(context: Context) {
         refWatcher = if (BuildConfig.DEBUG) LeakCanary.install(context as Application) else RefWatcher.DISABLED
     }
+
+
 
     private fun initUtils(context: Context) {
         Utils.init(context)

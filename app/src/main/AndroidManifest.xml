@@ -50,6 +50,9 @@
         <activity
             android:name=".features.shopcart.ShopcartActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".features.products.ProductsActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!--腾讯 bugly-->
         <activity

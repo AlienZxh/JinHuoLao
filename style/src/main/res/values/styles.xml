@@ -22,6 +22,13 @@
         <item name="android:windowBackground">@android:color/black</item>
     </style>
 
+     <style name="CustomAppTheme.Blue" parent="AppTheme">
+         <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+         <item name="colorAccent">@color/material_blue_500</item>
+         <item name="android:windowBackground">@color/material_light_white</item>
+     </style>
+
      <!-- 适用于开启滑动返回功能的Activity -->
      <style name="CustomAppTheme.Transparent" parent="AppTheme">
          <item name="android:windowBackground">@android:color/transparent</item>

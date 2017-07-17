@@ -3,6 +3,7 @@ package com.j1j2.jinhuolao.features.launcher
 import android.widget.Toast
 import com.j1j2.common.base.BaseMviActivity
 import com.j1j2.jinhuolao.features.category.CategoryActivity
+import com.j1j2.jinhuolao.features.products.ProductsActivity
 import com.j1j2.jinhuolao.features.shopcart.ShopcartActivity
 import io.reactivex.Observable
 import org.jetbrains.anko.startActivity
@@ -31,7 +32,7 @@ class LauncherActivity : BaseMviActivity<LauncherUI, LauncherView, LauncherPrese
     override fun render(state: LauncherViewState) {
         when (state) {
             is LauncherViewState.LoginStateView -> {
-                startActivity<ShopcartActivity>()
+                startActivity<ProductsActivity>()
                 finish()
             }
             is LauncherViewState.LogoutStateView -> {
