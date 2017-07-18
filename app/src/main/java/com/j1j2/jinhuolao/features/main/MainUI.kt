@@ -2,7 +2,9 @@ package com.j1j2.jinhuolao.features.main
 
 import android.graphics.Color
 import android.os.Build
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.CoordinatorLayout
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
@@ -21,10 +23,12 @@ import org.jetbrains.anko.support.v4.viewPager
 /**
  * Created by albertz on 17-7-13.
  */
-class MainUI : AnkoComponent<AppCompatActivity> {
-
+class MainUI constructor(val mainAdapter: MainAdapter) : AnkoComponent<AppCompatActivity> {
+    val viewPagerId = 1
     lateinit var layout: CoordinatorLayout
     lateinit var toolbar: Toolbar
+    lateinit var viewPager: ViewPager
+    lateinit var bottomNavigationView: BottomNavigationView
 
     override fun createView(ui: AnkoContext<AppCompatActivity>): View {
         layout = with(ui) {
@@ -39,22 +43,28 @@ class MainUI : AnkoComponent<AppCompatActivity> {
                         id = R.id.toolbar
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = dip(8).toFloat()
 
+                        owner.setSupportActionBar(this)
                     }.lparams(width = matchParent, height = ctx.attrAsDimen(R.attr.actionBarSize))
 
                 }.lparams(width = matchParent, height = wrapContent)
 
-                viewPager { }.lparams(width = matchParent, height = wrapContent) {
+                viewPager = viewPager {
+                    id = viewPagerId
+                    adapter = mainAdapter
+
+                }.lparams(width = matchParent, height = wrapContent) {
                     topMargin = ctx.attrAsDimen(R.attr.actionBarSize)
                     bottomMargin = dip(56)
                 }
 
-                bottomNavigationView {
+                bottomNavigationView = bottomNavigationView {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) elevation = dip(4).toFloat()
 
                     inflateMenu(R.menu.main_bottom_navigation)
                     menu.findItem(R.id.storehouse).setIcon(IconicsDrawable(ctx).icon(CommunityMaterial.Icon.cmd_store).color(Color.GRAY).sizeDp(24))
                     menu.findItem(R.id.category).setIcon(IconicsDrawable(ctx).icon(CommunityMaterial.Icon.cmd_format_list_bulleted_type).color(Color.GRAY).sizeDp(24))
-                    menu.findItem(R.id.mine).setIcon(IconicsDrawable(ctx).icon(CommunityMaterial.Icon.cmd_account).color(Color.GRAY).sizeDp(24))
+                    menu.findItem(R.id.personal).setIcon(IconicsDrawable(ctx).icon(CommunityMaterial.Icon.cmd_account).color(Color.GRAY).sizeDp(24))
+
 
                 }.lparams(width = matchParent, height = dip(56)) {
                     gravity = Gravity.BOTTOM or Gravity.END

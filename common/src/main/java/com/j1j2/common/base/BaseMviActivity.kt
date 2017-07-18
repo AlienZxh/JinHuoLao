@@ -39,7 +39,11 @@ abstract class BaseMviActivity<UI : AnkoComponent<AppCompatActivity>, V : MvpVie
 
     protected abstract fun createUI(): UI
 
-    val ui: UI by lazy {
+    protected open fun initView(ui: UI) {
+
+    }
+
+    protected val ui: UI by lazy {
         createUI()
     }
 
@@ -50,6 +54,7 @@ abstract class BaseMviActivity<UI : AnkoComponent<AppCompatActivity>, V : MvpVie
         super.onCreate(savedInstanceState)
         immersionBar().init()
         ui.setContentView(this)
+        initView(ui)
     }
 
     override fun onDestroy() {

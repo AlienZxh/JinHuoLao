@@ -3,6 +3,7 @@ package com.j1j2.jinhuolao.features.storehouse
 import android.graphics.Color
 import android.os.Build
 import android.support.design.widget.CoordinatorLayout
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
@@ -21,7 +22,16 @@ import org.jetbrains.anko.support.v4.viewPager
 /**
  * Created by albertz on 17-7-13.
  */
-class StorehouseUI {
+class StorehouseUI : AnkoComponent<Fragment> {
+
+    override fun createView(ui: AnkoContext<Fragment>): View {
+        return with(ui) {
+            frameLayout {
+                lparams(width = matchParent, height = matchParent)
+                backgroundResource = R.color.material_brown_500
 
 
+            }
+        }
+    }
 }

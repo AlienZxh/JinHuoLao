@@ -1,4 +1,4 @@
-package com.j1j2.jinhuolao.features.storehouse
+package com.j1j2.jinhuolao.features.personal
 
 import com.hannesdorfmann.mosby3.mvi.MviBasePresenter
 import javax.inject.Inject
@@ -6,7 +6,8 @@ import javax.inject.Inject
 /**
  * Created by albertz on 17-7-14.
  */
-class StorehousePresenter @Inject constructor() :MviBasePresenter<StorehouseView,StorehouseViewState>(){
+class PersonalPresenter @Inject constructor() :MviBasePresenter<PersonalView, PersonalViewState>(){
+
     override fun bindIntents() {
     }
 }
