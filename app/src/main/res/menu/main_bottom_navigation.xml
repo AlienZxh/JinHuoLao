@@ -4,8 +4,8 @@
         android:id="@+id/storehouse"
         android:title="仓库" />
     <item
-        android:id="@+id/category"
-        android:title="分类" />
+        android:id="@+id/suppliers"
+        android:title="供应商" />
     <item
         android:id="@+id/personal"
         android:title="我的" />

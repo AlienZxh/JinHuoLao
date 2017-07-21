@@ -2,11 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/search"
-        android:title="搜索"
+        android:id="@+id/setting"
+        android:title="设置"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/qrscan"
-        android:title="扫一扫"
-        app:showAsAction="always" />
+
 </menu>

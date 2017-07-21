@@ -7,7 +7,7 @@ import dagger.android.AndroidInjector
 /**
  * Created by albertz on 17-7-18.
  */
-@Subcomponent(modules = arrayOf(MainModule::class, CategoryModule::class,PersonalModule::class,StorehouseModule::class))
+@Subcomponent(modules = arrayOf(MainModule::class, SuppliersModule::class,PersonalModule::class,StorehouseModule::class))
 interface MainComponent : AndroidInjector<MainActivity> {
 
     @Subcomponent.Builder

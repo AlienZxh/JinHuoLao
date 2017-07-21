@@ -50,6 +50,12 @@ inline fun ViewManager.baseStatefulLayout(init: BaseStatefulLayout.() -> Unit): 
 }
 
 
+@Suppress("NOTHING_TO_INLINE")
+inline fun ViewManager.noSlidingViewPaper() = noSlidingViewPaper(init = {})
+
+inline fun ViewManager.noSlidingViewPaper(init: NoSlidingViewPaper.() -> Unit): NoSlidingViewPaper {
+    return ankoView({ NoSlidingViewPaper(it) }, theme = 0, init = init)
+}
 
 
 

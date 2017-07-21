@@ -8,7 +8,7 @@ import dagger.Module
 /**
  * Created by albertz on 17-7-18.
  */
-@Module(subcomponents = arrayOf(CategoryComponent::class,PersonalComponent::class,StorehouseComponent::class))
+@Module(subcomponents = arrayOf(SuppliersComponent::class,PersonalComponent::class,StorehouseComponent::class))
 abstract class MainModule {
     @Binds
     abstract fun provideLauncherView(mainActivity: MainActivity): MainView

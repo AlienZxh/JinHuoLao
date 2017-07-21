@@ -1,9 +1,7 @@
 package com.j1j2.jinhuolao.features.main
 
 import android.graphics.Color
-import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import com.j1j2.common.base.BaseMviActivity
@@ -18,7 +16,6 @@ import javax.inject.Inject
 class MainActivity : BaseMviActivity<MainUI, MainView, MainPresenter>(), MainView {
 
     @Inject lateinit var mainPresenter: MainPresenter
-    var prevMenuItem: MenuItem? = null
 
     override fun initView(ui: MainUI) {
         super.initView(ui)
@@ -29,7 +26,7 @@ class MainActivity : BaseMviActivity<MainUI, MainView, MainPresenter>(), MainVie
                         ui.viewPager.currentItem = 0
                         return true
                     }
-                    R.id.category -> {
+                    R.id.suppliers -> {
                         ui.viewPager.currentItem = 1
                         return true
                     }
@@ -42,26 +39,7 @@ class MainActivity : BaseMviActivity<MainUI, MainView, MainPresenter>(), MainVie
             }
         })
 
-        ui.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-            }
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            }
-
-            override fun onPageSelected(position: Int) {
-
-                if (prevMenuItem != null) {
-                    prevMenuItem!!.setChecked(false);
-                } else {
-                    ui.bottomNavigationView.getMenu().getItem(0).setChecked(false);
-                }
-
-                prevMenuItem = ui.bottomNavigationView.getMenu().getItem(position);
-                prevMenuItem?.setChecked(true);
-
-            }
-        })
     }
 
     override fun createUI(): MainUI = MainUI(MainAdapter(supportFragmentManager))
@@ -70,6 +48,7 @@ class MainActivity : BaseMviActivity<MainUI, MainView, MainPresenter>(), MainVie
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_toolbar, menu)
+        menu.findItem(R.id.search).setIcon(IconicsDrawable(this).icon(CommunityMaterial.Icon.cmd_magnify).color(Color.WHITE).sizeDp(24))
         menu.findItem(R.id.qrscan).setIcon(IconicsDrawable(this).icon(CommunityMaterial.Icon.cmd_qrcode_scan).color(Color.WHITE).sizeDp(24))
         return true
     }

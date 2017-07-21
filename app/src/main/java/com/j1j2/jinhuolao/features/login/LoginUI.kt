@@ -78,6 +78,13 @@ class LoginUI : AnkoComponent<AppCompatActivity> {
                     topMargin = dip(8)
                     horizontalMargin = dip(16)
                 }
+
+                include<Button>(R.layout.view_button_blue) {
+                    text = "注册"
+                }.lparams(width = matchParent, height = dip(48)) {
+                    topMargin = dip(8)
+                    horizontalMargin = dip(16)
+                }
             }
         }
     }

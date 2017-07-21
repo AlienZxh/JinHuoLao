@@ -1,6 +1,7 @@
 package com.j1j2.jinhuolao.di
 
 import android.app.Activity
+import com.j1j2.jinhuolao.features.category.CategoryActivity
 import com.j1j2.jinhuolao.features.launcher.LauncherActivity
 import com.j1j2.jinhuolao.features.main.MainActivity
 import dagger.android.AndroidInjector
@@ -25,4 +26,10 @@ abstract class ActivityBuilder {
     @IntoMap
     @ActivityKey(MainActivity::class)
     abstract fun bindMainActivity(builder: MainComponent.Builder): AndroidInjector.Factory<out Activity>
+
+
+    @Binds
+    @IntoMap
+    @ActivityKey(CategoryActivity::class)
+    abstract fun provideDetailFragmentFactory(builder: CategoryComponent.Builder): AndroidInjector.Factory<out Activity>
 }

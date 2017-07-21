@@ -86,7 +86,9 @@ dependencies {
     compile "com.mikepenz:iconics-core:$rootProject.iconicsVersion"
     compile "com.mikepenz:community-material-typeface:$rootProject.communityMterialTypefaceVersion"
     compile "cz.kinst.jakub:android-stateful-layout-base:$rootProject.statefulLayoutVersion"
-
+    compile ("com.alibaba.android:ultraviewpager:$rootProject.ultraviewpagerVersion") {
+        transitive = true
+    }
 
     androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'

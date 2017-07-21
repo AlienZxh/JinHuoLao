@@ -10,7 +10,7 @@ import javax.inject.Singleton
 /**
  * Created by zxh19 on 2017/6/25.
  */
-@Module(subcomponents = arrayOf(LauncherComponent::class,MainComponent::class),
+@Module(subcomponents = arrayOf(LauncherComponent::class, MainComponent::class, CategoryComponent::class),
         includes = arrayOf(InteractorModule::class, UtilsModule::class))
 abstract class AppModule {
 

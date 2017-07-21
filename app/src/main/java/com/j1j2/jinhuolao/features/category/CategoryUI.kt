@@ -22,9 +22,9 @@ import org.jetbrains.anko.support.v4.viewPager
 /**
  * Created by albertz on 17-7-13.
  */
-class CategoryUI : AnkoComponent<Fragment> {
+class CategoryUI : AnkoComponent<AppCompatActivity> {
 
-    override fun createView(ui: AnkoContext<Fragment>): View {
+    override fun createView(ui: AnkoContext<AppCompatActivity>): View {
         return with(ui) {
             frameLayout {
                 lparams(width = matchParent, height = matchParent)

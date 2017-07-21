@@ -28,7 +28,11 @@ abstract class BaseMviFragment<UI : AnkoComponent<Fragment>, V : MvpView, P : Mv
 
     protected abstract fun createUI(): UI
 
-    val ui: UI by lazy {
+    protected open fun initView(ui: UI) {
+
+    }
+
+    protected val ui: UI by lazy {
         createUI()
     }
 
@@ -39,6 +43,11 @@ abstract class BaseMviFragment<UI : AnkoComponent<Fragment>, V : MvpView, P : Mv
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = ui.createView(AnkoContext.Companion.create(context, this))
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(ui)
+    }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = this.childFragmentInjector
 
