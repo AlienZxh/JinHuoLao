@@ -1,28 +1,18 @@
 package com.j1j2.jinhuolao.features.storehouse
 
-import android.graphics.Color
-import android.os.Build
-import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.Toolbar
-import android.view.Gravity
+import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.j1j2.common.base.BaseAdapter
-import com.j1j2.common.widgets.attrAsDimen
 import com.j1j2.jinhuolao.R
-import com.mikepenz.community_material_typeface_library.CommunityMaterial
-import com.mikepenz.iconics.IconicsDrawable
-import eu.davidea.flexibleadapter.common.FlexibleItemDecoration
-import eu.davidea.flexibleadapter.common.SmoothScrollLinearLayoutManager
-import org.jetbrains.anko.*
-import org.jetbrains.anko.appcompat.v7.themedToolbar
-import org.jetbrains.anko.design.bottomNavigationView
-import org.jetbrains.anko.design.coordinatorLayout
-import org.jetbrains.anko.design.themedAppBarLayout
+import eu.davidea.flexibleadapter.common.SmoothScrollGridLayoutManager
+import org.jetbrains.anko.AnkoComponent
+import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.backgroundResource
+import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.viewPager
+
 
 /**
  * Created by albertz on 17-7-13.
@@ -34,8 +24,13 @@ class StorehouseUI(val baseAdapter: BaseAdapter) : AnkoComponent<Fragment> {
             recyclerView {
                 lparams(width = matchParent, height = matchParent)
                 backgroundResource = R.color.colorLayoutBackgroundLight
-
-                layoutManager = SmoothScrollLinearLayoutManager(ctx)
+                val gridLayoutManager = SmoothScrollGridLayoutManager(ctx, 4)
+                gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return baseAdapter.getItem(position)?.getSpanSize(4, position) ?: 1
+                    }
+                }
+                layoutManager = gridLayoutManager
                 itemAnimator = DefaultItemAnimator()
 
                 adapter = baseAdapter

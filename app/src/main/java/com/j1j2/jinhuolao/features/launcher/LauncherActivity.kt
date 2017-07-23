@@ -2,6 +2,7 @@ package com.j1j2.jinhuolao.features.launcher
 
 import android.widget.Toast
 import com.j1j2.common.base.BaseMviActivity
+import com.j1j2.jinhuolao.features.category.CategoryActivity
 import com.j1j2.jinhuolao.features.main.MainActivity
 import io.reactivex.Observable
 import org.jetbrains.anko.startActivity
@@ -30,7 +31,7 @@ class LauncherActivity : BaseMviActivity<LauncherUI, LauncherView, LauncherPrese
     override fun render(state: LauncherViewState) {
         when (state) {
             is LauncherViewState.LoginStateView -> {
-                startActivity<MainActivity>()
+                startActivity<CategoryActivity>()
                 finish()
             }
             is LauncherViewState.LogoutStateView -> {

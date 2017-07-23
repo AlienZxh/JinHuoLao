@@ -1,14 +1,15 @@
 package com.j1j2.jinhuolao.features.storehouse
 
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.RecyclerView
 import com.j1j2.common.base.BaseAdapter
 import com.j1j2.common.base.BaseMviFragment
 import com.j1j2.jinhuolao.R
 import com.j1j2.jinhuolao.features.personal.PersonalUI
-import com.j1j2.jinhuolao.items.SettingItem
-import com.j1j2.jinhuolao.items.StorehouseBannerItem
+import com.j1j2.jinhuolao.items.*
 import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.mikepenz.iconics.IconicsDrawable
+import eu.davidea.flexibleadapter.items.AbstractFlexibleItem
 import javax.inject.Inject
 
 
@@ -21,16 +22,34 @@ class StorehouseFragment : BaseMviFragment<StorehouseUI, StorehouseView, Storeho
     lateinit var baseAdapter: BaseAdapter
 
     override fun createUI(): StorehouseUI {
+        val head0 = StorehouseHeadItem(0)
+        val head1 = StorehouseHeadItem(1)
 
-        baseAdapter = BaseAdapter(arrayListOf(), this)
+        val list = arrayListOf<AbstractFlexibleItem<out RecyclerView.ViewHolder>>()
+        list.add(StorehouseBannerItem())
+        list.add(head0)
+        list.add(StorehouseCategoryItem( head0))
+        list.add(StorehouseCategoryItem( head0))
+        list.add(StorehouseCategoryItem( head0))
+        list.add(StorehouseCategoryItem( head0))
+        list.add(StorehouseCategoryItem( head0))
+        list.add(StorehouseCategoryItem( head0))
+        list.add(StorehouseCategoryItem( head0))
+        list.add(StorehouseCategoryItem( head0))
+        list.add(head1)
+        list.add(StorehouseSaleItem( head1))
+        list.add(StorehouseSaleItem( head1))
+        list.add(StorehouseSaleItem( head1))
+        list.add(StorehouseSaleItem( head1))
+        list.add(StorehouseSaleItem( head1))
+        list.add(StorehouseSaleItem( head1))
+
+        baseAdapter = BaseAdapter(list, this)
         return StorehouseUI(baseAdapter)
     }
 
     override fun createPresenter(): StorehousePresenter = storehousePresenter
     
-    override fun initView(ui: StorehouseUI) {
-        super.initView(ui)
-        baseAdapter.addScrollableHeader(StorehouseBannerItem())
-    }
+
 
 }

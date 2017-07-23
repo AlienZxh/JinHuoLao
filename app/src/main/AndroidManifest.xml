@@ -53,7 +53,9 @@
         <activity
             android:name=".features.products.ProductsActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
+        <activity
+            android:name=".features.category.CategoryActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--腾讯 bugly-->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
