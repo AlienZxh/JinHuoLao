@@ -32,7 +32,7 @@ class CategorySecondItem : AbstractFlexibleItem<CategorySecondItem.CategorySecon
 
         val context = holder?.itemView?.context
         val drawable = DrawableUtils.getSelectableBackgroundCompat(
-                Color.WHITE, Color.parseColor("#dddddd"), // Same color of divider
+                Color.TRANSPARENT, Color.WHITE, // Same color of divider
                 DrawableUtils.getColorControlHighlight(context))
         DrawableUtils.setBackgroundCompat(holder?.itemView, drawable)
     }

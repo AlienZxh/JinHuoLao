@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:maxHeight="50dp"
-    android:maxWidth="200dp"
     android:orientation="horizontal">
 
     <android.support.v7.widget.AppCompatButton
@@ -12,15 +10,21 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="-"
-        android:textSize="21sp" />
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/edit"
+        android:id="@+id/quantity_edit"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:inputType="number"
+        android:layout_weight="1.4"
         android:imeOptions="actionDone"
-        android:layout_weight="2" />
+        android:inputType="number"
+        android:maxLength="4"
+        android:background="@null"
+        android:text="9999"
+        android:gravity="center"
+        android:textColor="@color/color_text_666" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/plus_btn"
@@ -29,7 +33,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="+"
-        android:textSize="21sp"
+        android:textSize="17sp"
+        android:textStyle="bold"
         android:theme="@style/CustomAppTheme.Blue" />
 
 </LinearLayout>

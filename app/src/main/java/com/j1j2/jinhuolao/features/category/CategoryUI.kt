@@ -44,7 +44,7 @@ class CategoryUI(val categorySecondAdapter: BaseAdapter) : AnkoComponent<AppComp
                         adapter = categorySecondAdapter;
                     }.lparams(width = dip(0), height = matchParent, weight = 1f)
                     recyclerView {
-                        backgroundResource = R.color.material_blue_500
+                        backgroundResource = R.color.material_light_white
                     }.lparams(width = dip(0), height = matchParent, weight = 2.5f)
 
                 }.lparams(width = matchParent, height = matchParent) {
