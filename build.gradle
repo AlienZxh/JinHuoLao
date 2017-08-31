@@ -41,6 +41,7 @@ allprojects {
 
         rxjavaVersion = '2.1.1'
         rxandroidVersion = '2.0.1'
+        rxbindingVersion = '2.0.0'
         gsonVersion = "2.8.1"
         okhttpVersion = '3.8.1'
         retrofitVersion = '2.3.0'
