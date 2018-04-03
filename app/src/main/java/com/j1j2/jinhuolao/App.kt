@@ -78,7 +78,9 @@ open class App : DaggerApplication() {
         Beta.autoCheckUpgrade = true
         Beta.storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)//设置sd卡的Download为更新资源存储目录
         val strategy = BuglyStrategy()
-        strategy.appChannel = if (BuildConfig.DEBUG) "jpos-debug" else "jpos"
+      
+	    strategy.appChannel = if (BuildConfig.DEBUG) "jinhuolao-debug" else "jinhuolao"
+
         Bugly.init(context, Constants.BUGLY_ID, BuildConfig.DEBUG, strategy)
     }
 
